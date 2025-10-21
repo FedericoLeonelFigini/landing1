@@ -1,54 +1,58 @@
 const overlay = document.querySelector(".overlay");
 const infoContainer = document.getElementById("info-container");
 
-// Textos extendidos de los servicios
-const textos = [
-  "Creamos landing pages efectivas, optimizadas para captar clientes y con tiempos de carga mínimos.",
-  "Desarrollamos portfolios atractivos, animados y adaptados a tu estilo profesional.",
-  "Usamos JS y CSS avanzado para lograr interfaces dinámicas y responsivas.",
-  "Optimizamos tu sitio con buenas prácticas SEO para mejorar su posicionamiento.",
-  "Diseños 100% adaptativos que se ven perfectos en todos los dispositivos.",
-  "Aplicaciones SPA modernas y veloces con frameworks y rutas dinámicas.",
-  "Integraciones con APIs externas, formularios, bases de datos y más.",
-  "Animaciones fluidas con CSS y librerías de movimiento profesional.",
-  "Diseños centrados en el usuario: experiencia y estética unidas.",
-  "Formularios inteligentes con validación, seguridad y envíos directos.",
-  "Tiendas online seguras y modernas con carritos funcionales.",
-  "Paneles administrativos con visualización de datos intuitiva.",
-  "Chatbots que responden automáticamente a tus visitantes.",
-  "Landing pages enfocadas en captar alumnos o leads.",
-  "Blogs visualmente atractivos y optimizados para lectura.",
-  "Webs institucionales que reflejan la identidad de tu empresa.",
-  "Mejoramos la velocidad de carga de tu sitio drásticamente.",
-  "Aplicamos medidas de seguridad front end contra ataques comunes.",
-  "SVG animados y visuales de alto impacto gráfico.",
-  "Asesoría directa sobre diseño, desarrollo y mejoras técnicas."
+const detalles = [
+  "Landing Pages enfocadas en conversión y optimización de carga.",
+  "Portfolios personalizados y adaptativos con animaciones.",
+  "Conexión entre frontend y backend mediante APIs y servicios REST.",
+  "Single Page Applications rápidas con JS moderno.",
+  "Paneles de control dinámicos con estadísticas en tiempo real.",
+  "Sistemas de login y roles con protección avanzada.",
+  "Diseño y consumo de APIs seguras y escalables.",
+  "Efectos y transiciones animadas con CSS y JS.",
+  "Optimización SEO con estructura semántica.",
+  "Diseños adaptables a todo tipo de pantalla.",
+  "Configuración de dominios, SSL y despliegue en la nube.",
+  "Integración de plataformas de pago internacionales.",
+  "Gestión dinámica de contenido para blogs modernos.",
+  "Comunidades en línea con foros y roles de usuario.",
+  "Chats en vivo con sockets y WebRTC.",
+  "Dashboards para usuarios con preferencias personales.",
+  "Sistema de notificaciones push multiusuario.",
+  "Automatización de tareas y scripts inteligentes.",
+  "Sistema de correos automáticos de confirmación.",
+  "Gestión y conexión con bases de datos SQL/NoSQL.",
+  "Seguridad con tokens JWT y sesiones cifradas.",
+  "Subida de archivos e imágenes con backend seguro.",
+  "Integraciones con servicios de terceros (APIs).",
+  "Automatización de formularios con validación.",
+  "Estadísticas y analítica de comportamiento web.",
+  "Estructura técnica optimizada para SEO avanzado.",
+  "Consultoría full stack para empresas.",
+  "Arquitectura modular con componentes reutilizables.",
+  "SVG animados con precisión y rendimiento.",
+  "Asesoría profesional en proyectos web."
 ];
 
-// Mostrar info
-document.querySelectorAll('.btn-ver').forEach((btn, i) => {
-  btn.addEventListener('click', () => {
-    overlay.style.display = 'block';
-    const box = document.createElement('div');
-    box.classList.add('info-box');
+document.querySelectorAll(".btn-ver").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const index = btn.dataset.index;
+    overlay.style.display = "block";
+    const box = document.createElement("div");
+    box.classList.add("info-box");
     box.innerHTML = `
-      <h3>${btn.parentElement.querySelector('h2').textContent}</h3>
-      <p>${textos[i]}</p>
+      <h3>${btn.parentElement.querySelector("h2").textContent}</h3>
+      <p>${detalles[index]}</p>
       <button class="btn-cerrar">Ver menos</button>
     `;
     infoContainer.appendChild(box);
 
-    document.querySelector('.btn-cerrar').addEventListener('click', cerrar);
-    overlay.addEventListener('click', cerrar);
+    document.querySelector(".btn-cerrar").addEventListener("click", cerrar);
+    overlay.addEventListener("click", cerrar);
   });
 });
 
-// Cerrar info
 function cerrar() {
-  overlay.style.display = 'none';
-  infoContainer.innerHTML = '';
+  overlay.style.display = "none";
+  infoContainer.innerHTML = "";
 }
-
-// Precio fijo
-const precio = 15000;
-document.getElementById('precio').textContent = precio.toLocaleString('es-AR');
