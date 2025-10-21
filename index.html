@@ -3,52 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TuSitioWebADistancia — Servicios Web Profesionales</title>
+  <title>tusitiowebadistancia</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="icono.png" />
+  <link rel="icon" href="./imagenes/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Loader -->
+  <div id="loader">
+    <img src="./imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="loader-icon" />
+    <h2></h2>
+  </div>
+
   <header class="header">
-    <h1>TuSitioWebADistancia</h1>
-    <p>100% a distancia — Desarrollo profesional Front End + Back End</p>
+    <img src="./imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="logo" />
+    <h1></h1>
+    <p></p>
     <div class="consultas">
-      <p><strong>Consultas personalizadas (30 min): 10 USD</strong></p>
+      <p class="consulta-texto">
+        💬 <span>Consultas personalizadas (30 min) — 10 USD</span>
+      </p>
       <a href="https://wa.me/541141999497" class="btn-wpp" target="_blank">💬 Consultar por WhatsApp</a>
     </div>
   </header>
 
   <main class="services">
-    <!-- 30 tarjetas -->
-    <div class="service-card"><h2>Landing Pages</h2><p>Diseños optimizados para captar clientes.</p><button class="btn-ver" data-index="0">Ver más</button></div>
-    <div class="service-card"><h2>Portfolios Web</h2><p>Presentá tus proyectos con estilo.</p><button class="btn-ver" data-index="1">Ver más</button></div>
-    <div class="service-card"><h2>Front + Back Integration</h2><p>Conexión total entre UI y servidor.</p><button class="btn-ver" data-index="2">Ver más</button></div>
-    <div class="service-card"><h2>Aplicaciones SPA</h2><p>Apps rápidas y fluidas con JS.</p><button class="btn-ver" data-index="3">Ver más</button></div>
-    <div class="service-card"><h2>Dashboards Administrativos</h2><p>Control total de tus datos.</p><button class="btn-ver" data-index="4">Ver más</button></div>
-    <div class="service-card"><h2>Autenticación Segura</h2><p>Inicio de sesión con seguridad avanzada.</p><button class="btn-ver" data-index="5">Ver más</button></div>
-    <div class="service-card"><h2>APIs RESTful</h2><p>Integraciones backend con endpoints escalables.</p><button class="btn-ver" data-index="6">Ver más</button></div>
-    <div class="service-card"><h2>Animaciones Web</h2><p>Interactividad visual fluida y moderna.</p><button class="btn-ver" data-index="7">Ver más</button></div>
-    <div class="service-card"><h2>Optimización SEO</h2><p>Mayor visibilidad en buscadores.</p><button class="btn-ver" data-index="8">Ver más</button></div>
-    <div class="service-card"><h2>Diseño Responsive</h2><p>Perfecto en cualquier pantalla.</p><button class="btn-ver" data-index="9">Ver más</button></div>
-    <div class="service-card"><h2>Hosting & Deploy</h2><p>Publicación profesional en servidores.</p><button class="btn-ver" data-index="10">Ver más</button></div>
-    <div class="service-card"><h2>Integración de Pagos</h2><p>Stripe, PayPal y MercadoPago listos.</p><button class="btn-ver" data-index="11">Ver más</button></div>
-    <div class="service-card"><h2>Blogs Dinámicos</h2><p>Administrá tu contenido fácilmente.</p><button class="btn-ver" data-index="12">Ver más</button></div>
-    <div class="service-card"><h2>Foros y Comunidades</h2><p>Espacios de interacción web.</p><button class="btn-ver" data-index="13">Ver más</button></div>
-    <div class="service-card"><h2>Chat en Tiempo Real</h2><p>Comunicaciones instantáneas con sockets.</p><button class="btn-ver" data-index="14">Ver más</button></div>
-    <div class="service-card"><h2>Paneles de Usuario</h2><p>Gestión personalizada por usuario.</p><button class="btn-ver" data-index="15">Ver más</button></div>
-    <div class="service-card"><h2>Notificaciones Push</h2><p>Alertas instantáneas y efectivas.</p><button class="btn-ver" data-index="16">Ver más</button></div>
-    <div class="service-card"><h2>Automatización de Procesos</h2><p>Scripts para tareas recurrentes.</p><button class="btn-ver" data-index="17">Ver más</button></div>
-    <div class="service-card"><h2>Envío de Emails</h2><p>Notificaciones automáticas vía correo.</p><button class="btn-ver" data-index="18">Ver más</button></div>
-    <div class="service-card"><h2>Gestión de Bases de Datos</h2><p>MySQL, MongoDB y PostgreSQL.</p><button class="btn-ver" data-index="19">Ver más</button></div>
-    <div class="service-card"><h2>Autenticación JWT</h2><p>Seguridad avanzada con tokens.</p><button class="btn-ver" data-index="20">Ver más</button></div>
-    <div class="service-card"><h2>Subida de Archivos</h2><p>Imágenes, PDFs y contenido multimedia.</p><button class="btn-ver" data-index="21">Ver más</button></div>
-    <div class="service-card"><h2>Integraciones Externas</h2><p>Conectá tu web con otras apps.</p><button class="btn-ver" data-index="22">Ver más</button></div>
-    <div class="service-card"><h2>Automatización de Formularios</h2><p>Recolección y envío automático de datos.</p><button class="btn-ver" data-index="23">Ver más</button></div>
-    <div class="service-card"><h2>Estadísticas Web</h2><p>Métricas e informes automáticos.</p><button class="btn-ver" data-index="24">Ver más</button></div>
-    <div class="service-card"><h2>SEO Técnico</h2><p>Optimización avanzada de estructura.</p><button class="btn-ver" data-index="25">Ver más</button></div>
-    <div class="service-card"><h2>Consultoría Full Stack</h2><p>Asesoramiento técnico integral.</p><button class="btn-ver" data-index="26">Ver más</button></div>
-    <div class="service-card"><h2>Desarrollo por Componentes</h2><p>Reutilización modular en proyectos.</p><button class="btn-ver" data-index="27">Ver más</button></div>
-    <div class="service-card"><h2>Animaciones SVG</h2><p>Gráficos vectoriales animados.</p><button class="btn-ver" data-index="28">Ver más</button></div>
-    <div class="service-card"><h2>Asesoría Técnica</h2><p>Apoyo profesional en desarrollo web.</p><button class="btn-ver" data-index="29">Ver más</button></div>
+    <!-- Ejemplo de tarjeta (se repite en script) -->
   </main>
 
   <div class="overlay"></div>
