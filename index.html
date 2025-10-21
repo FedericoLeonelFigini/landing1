@@ -3,39 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>tusitiowebadistancia</title>
+  <title>TuSitioWebADistancia — Desarrollo Web Profesional</title>
+  <meta name="description" content="TuSitioWebADistancia: creación de sitios web 100% a distancia. E-commerce, Landing Pages, Sitios Multipágina, SEO y más. Consultas profesionales a distancia." />
+  <meta name="keywords" content="diseño web, desarrollo web, landing page, ecommerce, multipágina, SEO, programación, argentina, tusitiowebadistancia, sitios a distancia" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="./imagenes/logo.png" />
+  <link rel="icon" href="imagenes/logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <!-- Loader -->
   <div id="loader">
-    <img src="./imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="loader-icon" />
-    <h2></h2>
+    <img src="imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="loader-icon" />
+    <h2>TuSitioWebADistancia</h2>
   </div>
 
+  <!-- Música de fondo -->
+  <audio id="musica-fondo" src="musica/musica.mp3" autoplay loop></audio>
+  <button id="toggle-musica" aria-label="Controlar música">🔊</button>
+
+  <!-- Encabezado -->
   <header class="header">
-    <img src="./imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="logo" />
-    <h1></h1>
-    <p></p>
-    <div class="consultas">
-      <p class="consulta-texto">
-        💬 <span>Consultas personalizadas (30 min) — 10 USD</span>
-      </p>
-      <a href="https://wa.me/541141999497" class="btn-wpp" target="_blank">💬 Consultar por WhatsApp</a>
-    </div>
+    <nav class="navbar">
+      <img src="imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="logo" />
+      <ul class="nav-links">
+        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+        <li><a href="#servicios">Servicios Más Demandados</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="services">
-    <!-- Ejemplo de tarjeta (se repite en script) -->
-  </main>
+  <!-- Quiénes Somos -->
+  <section id="quienes-somos" class="section">
+    <h1>Quiénes Somos</h1>
+    <p>
+      En <strong>TuSitioWebADistancia</strong> transformamos ideas en resultados.
+      Desarrollamos sitios web 100% a distancia, garantizando calidad, comunicación continua y tiempos de entrega ágiles.
+      Trabajamos para que tengas presencia online sin moverte de tu casa o empresa.
+    </p>
+  </section>
 
-  <div class="overlay"></div>
-  <div id="info-container"></div>
+  <!-- Servicios -->
+  <section id="servicios" class="section servicios">
+    <h2>Servicios Más Demandados</h2>
+
+    <div class="servicio">
+      <video src="videos/multipagina.mp4" autoplay muted loop></video>
+      <div class="servicio-texto">
+        <h3>Sitio Multipágina</h3>
+        <p>
+          Ideal para empresas o profesionales que buscan una presencia sólida en línea.  
+          Incluye secciones completas (inicio, servicios, contacto, etc.) con diseño responsive, optimización SEO y soporte continuo.  
+          ✔️ Navegación intuitiva  
+          ✔️ Diseño corporativo  
+          ✔️ Optimización en motores de búsqueda
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio">
+      <video src="videos/ecommerce.mp4" autoplay muted loop></video>
+      <div class="servicio-texto">
+        <h3>E-Commerce</h3>
+        <p>
+          Vendé tus productos en línea con un sistema de pagos seguro y diseño profesional.  
+          ✔️ Carrito de compras dinámico  
+          ✔️ Panel de control  
+          ✔️ Integraciones con WhatsApp, MercadoPago o PayPal  
+          ✔️ Seguridad SSL y rendimiento optimizado
+        </p>
+      </div>
+    </div>
+
+    <div class="servicio">
+      <video src="videos/landing.mp4" autoplay muted loop></video>
+      <div class="servicio-texto">
+        <h3>Landing Page</h3>
+        <p>
+          Una sola página diseñada para generar conversiones.  
+          ✔️ Diseño rápido y visualmente atractivo  
+          ✔️ Formulario de contacto integrado  
+          ✔️ Ideal para campañas o productos específicos  
+          ✔️ Resultados medibles y adaptables
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="section contacto">
+    <h2>Contacto</h2>
+    <div class="contacto-contenido">
+      <img src="imagenes/logo.png" alt="Consultas TuSitioWebADistancia" class="foto-contacto" />
+      <div class="contacto-texto">
+        <p><strong>Consultas personalizadas por 29 minutos — 10 USD</strong></p>
+        <a href="https://wa.me/541141999497" class="btn-wpp" target="_blank">💬 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>Consulta personalizada (30 min) — <strong>10 USD</strong></p>
     <p>© 2025 TuSitioWebADistancia — Todos los derechos reservados</p>
   </footer>
 
