@@ -49,6 +49,6 @@ function cerrar() {
   infoContainer.innerHTML = '';
 }
 
-// Precio aleatorio
-const precio = Math.floor(Math.random() * (4000 - 1000) + 1000);
-document.getElementById('precio').textContent = precio;
+// Precio fijo
+const precio = 15000;
+document.getElementById('precio').textContent = precio.toLocaleString('es-AR');
