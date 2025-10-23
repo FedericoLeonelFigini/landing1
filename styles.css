@@ -62,7 +62,7 @@ body {
 
 .logo-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
@@ -76,10 +76,11 @@ body {
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-/* ===== ENLACES ===== */
+/* ===== ENLACES PRINCIPALES ===== */
 .nav-links {
   list-style: none;
   display: flex;
+  justify-content: center;
   gap: 2rem;
   margin: 0;
   padding: 0.5rem 0;
@@ -89,7 +90,7 @@ body {
   color: var(--blanco);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   transition: var(--transicion);
 }
 
@@ -98,55 +99,9 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== BOTÓN MENÚ ===== */
-.menu-btn {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: var(--azul-oscuro);
-  cursor: pointer;
-  z-index: 30;
-}
-
-/* ===== MENÚ MÓVIL ===== */
-.menu-movil {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  /* 🔵 Mismo degradado horizontal que el encabezado */
-  background: linear-gradient(to right, #ffffff 15%, var(--azul) 55%, var(--azul-oscuro) 100%);
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 25;
-  margin: 0;
-  padding: 0;
-  animation: slideDown 0.3s ease;
-  box-shadow: inset 0 1px 6px rgba(255,255,255,0.4),
-              0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.menu-movil a {
-  color: #fff;
-  padding: 1rem 0;
-  font-weight: 600;
-  text-decoration: none;
-  width: 100%;
-  text-align: center;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.menu-movil a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.03);
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ===== MENÚ HAMBURGUESA OCULTO ===== */
+.menu-btn, .menu-movil {
+  display: none !important;
 }
 
 /* ===== SECCIONES ===== */
@@ -244,7 +199,7 @@ body {
 }
 
 .faq-question:hover {
-  background: var(--azul-claro);
+  background: #e6f0ff;
 }
 
 .faq-answer {
@@ -320,14 +275,14 @@ footer {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .nav-links { display: none !important; }
-  .menu-btn { display: block; }
-
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
   .servicio {
     flex-direction: column;
     text-align: center;
   }
-
   .servicio video { width: 100%; }
   .faq-question { font-size: 1rem; padding: 0.9rem 1rem; }
 }
