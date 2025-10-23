@@ -76,7 +76,7 @@ body {
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-/* ===== ENLACES PRINCIPALES ===== */
+/* ===== ENLACES ===== */
 .nav-links {
   list-style: none;
   display: flex;
@@ -98,7 +98,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== BOTÓN MENÚ (MÓVIL) ===== */
+/* ===== BOTÓN MENÚ ===== */
 .menu-btn {
   display: none;
   font-size: 2rem;
@@ -109,12 +109,12 @@ body {
   z-index: 30;
 }
 
-/* ===== MENÚ MÓVIL (EXTENSIÓN DEL ENCABEZADO) ===== */
+/* ===== MENÚ MÓVIL ===== */
 .menu-movil {
   display: none;
   flex-direction: column;
   align-items: center;
-  /* 🔵 Degradado idéntico al header */
+  /* 🔵 Mismo degradado horizontal que el encabezado */
   background: linear-gradient(to right, #ffffff 15%, var(--azul) 55%, var(--azul-oscuro) 100%);
   width: 100%;
   position: absolute;
@@ -124,23 +124,9 @@ body {
   z-index: 25;
   margin: 0;
   padding: 0;
-  animation: slideDown 0.4s ease;
-  backdrop-filter: blur(6px);
-  box-shadow: inset 0 1px 10px rgba(255,255,255,0.4),
-              0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* efecto de fusión superior */
-.menu-movil::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 18px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0));
-  filter: blur(5px);
-  z-index: 5;
+  animation: slideDown 0.3s ease;
+  box-shadow: inset 0 1px 6px rgba(255,255,255,0.4),
+              0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .menu-movil a {
