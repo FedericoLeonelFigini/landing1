@@ -111,6 +111,7 @@ body {
 
 /* ===== MENÚ MÓVIL ===== */
 .menu-movil {
+  border-top: none; /* elimina cualquier línea superior */
   display: none;
   flex-direction: column;
   align-items: center;
@@ -148,6 +149,14 @@ body {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.menu-movil::before {
+  display: none;
+}
+
+
+
+
 
 /* ===== SECCIONES ===== */
 .section {
@@ -330,4 +339,74 @@ footer {
 
   .servicio video { width: 100%; }
   .faq-question { font-size: 1rem; padding: 0.9rem 1rem; }
+}
+
+/* ===== CORRECCIÓN VISUAL ENTRE HEADER Y MENÚ MÓVIL ===== */
+
+/* Eliminar márgenes, padding y sombras que generan el espacio */
+.header,
+.navbar,
+.logo-container,
+.menu-movil {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.header {
+  box-shadow: none !important;
+}
+
+/* Asegurar que el menú móvil se superponga sin hueco */
+.menu-movil {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #ffffff 15%, var(--azul) 55%, var(--azul-oscuro) 100%);
+  border-top: 0 !important;
+  margin-top: -1px; /* 🔥 elimina la línea blanca restante */
+  z-index: 99;
+}
+
+/* Si hay un borde interno o anti-aliasing del navegador */
+body {
+  background-color: var(--blanco);
+}
+
+/* ===== CORRECCIÓN FINAL — UNIÓN PERFECTA ENTRE HEADER Y MENÚ ===== */
+
+/* 1️⃣ Aseguramos que no haya márgenes ni sombras */
+.header, .navbar, .menu-movil {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 2️⃣ Ajustamos el degradado del header */
+.header {
+  background: linear-gradient(to right, #ffffff 15%, #007bff 55%, #004aad 100%);
+  z-index: 100;
+}
+
+/* 3️⃣ Hacemos que el menú móvil herede el degradado exacto */
+.menu-movil {
+  background: inherit; /* mismo degradado que el header */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  z-index: 99;
+  transform: translateY(-1px); /* 🔥 elimina por completo el hueco blanco */
+}
+
+/* 4️⃣ Evitamos renderizado blanco entre los dos degradados */
+body, html {
+  background-color: #fff;
+  overflow-x: hidden;
 }
