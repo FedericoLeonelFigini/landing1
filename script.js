@@ -53,3 +53,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+// ===== Menú móvil =====
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menu-btn");
+  const menuMovil = document.getElementById("menu-movil");
+
+  if (menuBtn && menuMovil) {
+    menuBtn.addEventListener("click", () => {
+      menuMovil.style.display =
+        menuMovil.style.display === "flex" ? "none" : "flex";
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    menuMovil.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuMovil.style.display = "none";
+      });
+    });
+  }
+});
