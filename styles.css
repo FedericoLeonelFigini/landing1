@@ -100,11 +100,12 @@ body {
 
 /* ===== BOTÓN MENÚ ===== */
 .menu-btn {
+  color: #ffffff; /* Blanco */
   display: none;
   font-size: 2rem;
   background: none;
   border: none;
-  color: var(--blanco-oscuro);
+  color: white (--azul-oscuro);
   cursor: pointer;
   z-index: 30;
 }
