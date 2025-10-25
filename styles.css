@@ -477,3 +477,40 @@ body, html {
   font-weight: 600;
   font-size: 1.1rem;
 }
+
+/* ===== AJUSTE ESPECÍFICO PARA TIENDA.HTML ===== */
+body.tienda-page .menu-btn,
+body.tienda-page .menu-movil {
+  display: none !important;
+}
+
+body.tienda-page .nav-links {
+  display: flex !important;
+  justify-content: center;
+  width: 100%;
+}
+
+body.tienda-page .nav-links li a {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(to right, #007bff, #004aad);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+body.tienda-page .nav-links li a:hover {
+  background: linear-gradient(to right, #006ae8, #003b8f);
+}
+
+/* En responsive, mostrar el enlace centrado */
+@media (max-width: 768px) {
+  body.tienda-page .logo-container {
+    justify-content: center;
+  }
+
+  body.tienda-page .nav-links {
+    margin-top: 0.8rem;
+  }
+}
