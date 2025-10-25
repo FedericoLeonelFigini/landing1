@@ -514,3 +514,36 @@ body.tienda-page .nav-links li a:hover {
     margin-top: 0.8rem;
   }
 }
+
+/* ===== TIENDA PAGE — ENLACE VOLVER ATRÁS ===== */
+body.tienda-page .nav-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+body.tienda-page .nav-links a {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(to right, #007bff, #004aad);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+body.tienda-page .nav-links a:hover {
+  background: linear-gradient(to right, #006ae8, #003b8f);
+  transform: scale(1.05);
+}
+
+/* En responsive: mantener centrado y visible */
+@media (max-width: 768px) {
+  body.tienda-page .logo-container {
+    justify-content: center;
+  }
+
+  body.tienda-page .nav-links {
+    margin-top: 0.8rem;
+  }
+}

@@ -1,5 +1,6 @@
 // ===== REDIRECCIÓN A WHATSAPP =====
 const botones = document.querySelectorAll(".btn-wpp");
+
 botones.forEach(boton => {
   boton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -10,14 +11,16 @@ botones.forEach(boton => {
   });
 });
 
-// ===== MENÚ RESPONSIVE =====
-const menuBtn = document.querySelector(".menu-btn");
-const menuMovil = document.querySelector(".menu-movil");
+// ===== FUNCIÓN VOLVER ATRÁS =====
+const volverAtras = document.getElementById("volver-atras");
 
-if (menuBtn && menuMovil) {
-  menuBtn.addEventListener("click", () => {
-    const visible = menuMovil.style.display === "flex";
-    menuMovil.style.display = visible ? "none" : "flex";
-    menuBtn.classList.toggle("open");
+if (volverAtras) {
+  volverAtras.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (window.history.length > 1) {
+      history.back();
+    } else {
+      window.location.href = "index.html"; // Fallback si no hay historial previo
+    }
   });
 }
