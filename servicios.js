@@ -96,8 +96,7 @@ document.querySelectorAll(".card3D").forEach(card => {
   if (!precio) return; // seguridad
 
   const precioOriginal = precio.textContent.trim();
-  const numeroWpp = "5491141999497";
-
+  const numeroWpp = "5491141999497"; // ✅ Formato correcto internacional
 
   // Obtener info de la tarjeta
   const titulo = card.querySelector("h3")?.textContent.trim() || "";
