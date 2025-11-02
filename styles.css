@@ -465,3 +465,43 @@ footer {
   user-select: none;
   transition: all 0.3s ease;
 }
+
+/* ===== EFECTO DE BRILLO VERDE PARA EL BOTÓN DE WHATSAPP ===== */
+@keyframes brilloVerde {
+  0%, 100% {
+    box-shadow: 0 0 8px #25D366;
+  }
+  50% {
+    box-shadow: 0 0 18px #25D366;
+  }
+}
+
+.brillo-verde a {
+  animation: brilloVerde 2s infinite;
+}
+
+/* ===== BOTÓN DE WHATSAPP EN TARJETAS ===== */
+.btn-wpp-tarjeta {
+  display: inline-block;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.btn-wpp-tarjeta:hover {
+  opacity: 0.85;
+}
+
+/* ===== EFECTO DE BRILLO VERDE ===== */
+@keyframes brilloVerde {
+  0%, 100% { box-shadow: 0 0 8px #25D366; }
+  50% { box-shadow: 0 0 18px #25D366; }
+}
+
+.brillo-verde a {
+  animation: brilloVerde 2s infinite;
+}

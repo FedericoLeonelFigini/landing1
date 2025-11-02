@@ -88,3 +88,86 @@ document.querySelectorAll(".card3D").forEach(card => {
     }
   });
 });
+
+// === INTERACCIÓN DE TARJETAS: CONSULTAR POR WHATSAPP ===
+document.querySelectorAll(".card3D").forEach(card => {
+  const precio = card.querySelector(".precio");
+  const precioOriginal = precio.textContent.trim();
+  const numeroWpp = "1141999497";
+
+  // Obtener datos de la tarjeta
+  const titulo = card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : "";
+  const descripcion = card.querySelector("p") ? card.querySelector("p").textContent.trim() : "";
+
+  card.addEventListener("click", () => {
+    // Si ya está mostrando el botón, volver al precio original
+    if (precio.dataset.active === "true") {
+      precio.innerHTML = precioOriginal;
+      precio.style.background = "linear-gradient(to right, #007bff, #004aad)";
+      precio.style.color = "#fff";
+      precio.dataset.active = "false";
+      precio.classList.remove("brillo-verde");
+    } 
+    else {
+      // Crear mensaje con descripción y título
+      const mensaje = `Hola! Estoy interesado en el servicio "${titulo}".\n\nDetalles: ${descripcion}\n\n¿Podrían brindarme más información?`;
+      const linkWpp = `https://wa.me/${numeroWpp}?text=${encodeURIComponent(mensaje)}`;
+
+      // Mostrar botón de WhatsApp
+      precio.innerHTML = `<a href="${linkWpp}" target="_blank" class="btn-wpp-tarjeta">Consultar por WhatsApp</a>`;
+      precio.style.background = "transparent";
+      precio.dataset.active = "true";
+      precio.classList.add("brillo-verde");
+
+      // Ajuste del enlace
+      const enlace = precio.querySelector("a");
+      enlace.style.color = "#fff";
+      enlace.style.textDecoration = "none";
+      enlace.style.fontWeight = "600";
+      enlace.style.display = "inline-block";
+      enlace.style.padding = "0.4rem 1rem";
+      enlace.style.borderRadius = "20px";
+      enlace.style.transition = "0.3s";
+      enlace.style.background = "#25D366";
+
+      enlace.addEventListener("mouseenter", () => enlace.style.opacity = "0.85");
+      enlace.addEventListener("mouseleave", () => enlace.style.opacity = "1");
+    }
+  });
+});
+
+// === CAMBIO DE PRECIO A BOTÓN DE WHATSAPP ===
+document.querySelectorAll(".card3D").forEach(card => {
+  const precio = card.querySelector(".precio");
+  if (!precio) return; // seguridad
+
+  const precioOriginal = precio.textContent.trim();
+  const numeroWpp = "1141999497";
+
+  // Obtener el texto de la tarjeta
+  const titulo = card.querySelector("h3")?.textContent.trim() || "";
+  const descripcion = card.querySelector("p")?.textContent.trim() || "";
+
+  card.addEventListener("click", (e) => {
+    e.stopPropagation(); // evita conflictos con otros clics
+
+    // Si ya tiene el botón, volver al precio
+    if (precio.dataset.active === "true") {
+      precio.textContent = precioOriginal;
+      precio.style.background = "linear-gradient(to right, #007bff, #004aad)";
+      precio.style.color = "#fff";
+      precio.dataset.active = "false";
+      precio.classList.remove("brillo-verde");
+    } else {
+      // Crear mensaje dinámico
+      const mensaje = `Hola! Estoy interesado en el servicio "${titulo}".\n\nDetalles: ${descripcion}\n\n¿Podrían brindarme más información?`;
+      const linkWpp = `https://wa.me/${numeroWpp}?text=${encodeURIComponent(mensaje)}`;
+
+      // Reemplazar por botón de WhatsApp
+      precio.innerHTML = `<a href="${linkWpp}" target="_blank" class="btn-wpp-tarjeta">Consultar por WhatsApp</a>`;
+      precio.style.background = "transparent";
+      precio.dataset.active = "true";
+      precio.classList.add("brillo-verde");
+    }
+  });
+});
