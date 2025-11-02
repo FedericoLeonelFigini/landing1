@@ -74,3 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// ==== Loader ====
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => loader.style.display = "none", 500);
+});
+
+// ==== Menú móvil ====
+const menuBtn = document.getElementById("menu-btn");
+const menuMovil = document.getElementById("menu-movil");
+
+menuBtn.addEventListener("click", () => {
+  const visible = menuMovil.style.display === "flex";
+  menuMovil.style.display = visible ? "none" : "flex";
+});
