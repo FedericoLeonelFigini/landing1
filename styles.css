@@ -46,7 +46,6 @@ body {
 .header {
   width: 100%;
   background: linear-gradient(to right, #ffffff 15%, var(--azul) 55%, var(--azul-oscuro) 100%);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -100,7 +99,7 @@ body {
 
 /* ===== BOTÓN MENÚ ===== */
 .menu-btn {
-  color: #ffffff; /* Blanco */
+  color: #ffffff;
   display: none;
   font-size: 2rem;
   background: none;
@@ -111,11 +110,9 @@ body {
 
 /* ===== MENÚ MÓVIL ===== */
 .menu-movil {
-  border-top: none; /* elimina cualquier línea superior */
   display: none;
   flex-direction: column;
   align-items: center;
-  /* 🔵 Mismo degradado horizontal que el encabezado */
   background: linear-gradient(to right, #ffffff 15%, var(--azul) 55%, var(--azul-oscuro) 100%);
   width: 100%;
   position: absolute;
@@ -123,11 +120,9 @@ body {
   left: 0;
   right: 0;
   z-index: 25;
-  margin: 0;
   padding: 0;
   animation: slideDown 0.3s ease;
-  box-shadow: inset 0 1px 6px rgba(255,255,255,0.4),
-              0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .menu-movil a {
@@ -149,14 +144,6 @@ body {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-.menu-movil::before {
-  display: none;
-}
-
-
-
-
 
 /* ===== SECCIONES ===== */
 .section {
@@ -198,26 +185,7 @@ body {
   box-shadow: 0 8px 18px rgba(0,0,0,0.1);
 }
 
-.servicio video {
-  width: 45%;
-  border-radius: 12px;
-}
-
-.servicio-texto {
-  flex: 1;
-  text-align: left;
-}
-
-.servicio-texto h3 {
-  color: var(--azul);
-  margin-bottom: 0.5rem;
-}
-
-.servicio-texto p {
-  color: #333;
-}
-
-/* ===== FAQ (ACORDEÓN MODERNO) ===== */
+/* ===== FAQ (ACORDEÓN) ===== */
 .faq-container {
   max-width: 900px;
   margin: 3rem auto;
@@ -230,7 +198,6 @@ body {
 .faq-item {
   border: 2px solid var(--azul);
   border-radius: 10px;
-  overflow: hidden;
   background: #ffffff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -241,7 +208,6 @@ body {
   background: #f9fbff;
   color: var(--azul);
   border: none;
-  outline: none;
   padding: 1rem 1.2rem;
   font-size: 1.05rem;
   font-weight: 600;
@@ -249,11 +215,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.3s ease;
-}
-
-.faq-question:hover {
-  background: var(--azul-claro);
 }
 
 .faq-answer {
@@ -265,24 +226,9 @@ body {
   transition: max-height 0.4s ease, padding 0.3s ease;
 }
 
-.faq-answer p {
-  margin: 1rem 0;
-  line-height: 1.5;
-}
-
 .faq-item.active .faq-answer {
   max-height: 300px;
   padding: 1rem 1.2rem;
-}
-
-.faq-item.active .faq-question .icon {
-  transform: rotate(45deg);
-  color: var(--azul-oscuro);
-}
-
-.faq-question .icon {
-  font-size: 1.5rem;
-  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 /* ===== CONTACTO ===== */
@@ -336,214 +282,119 @@ footer {
     flex-direction: column;
     text-align: center;
   }
-
-  .servicio video { width: 100%; }
-  .faq-question { font-size: 1rem; padding: 0.9rem 1rem; }
 }
 
-/* ===== CORRECCIÓN VISUAL ENTRE HEADER Y MENÚ MÓVIL ===== */
-
-/* Eliminar márgenes, padding y sombras que generan el espacio */
-.header,
-.navbar,
-.logo-container,
-.menu-movil {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
+/* ===== CARRUSELES 3D ===== */
+.categoria {
+  margin-bottom: 6rem;
+  padding-top: 3rem;
 }
 
-.header {
-  box-shadow: none !important;
+.categoria h2 {
+  text-align: center;
+  color: var(--azul-oscuro);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 2.5rem;
 }
 
-/* Asegurar que el menú móvil se superponga sin hueco */
-.menu-movil {
-  position: absolute;
-  top: 100%;
-  left: 0;
+.carousel-container {
+  position: relative;
+  perspective: 1000px;
+  margin: 3rem auto;
+  max-width: 900px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  position: relative;
   width: 100%;
-  background: linear-gradient(to right, #ffffff 15%, var(--azul) 55%, var(--azul-oscuro) 100%);
-  border-top: 0 !important;
-  margin-top: -1px; /* 🔥 elimina la línea blanca restante */
-  z-index: 99;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Si hay un borde interno o anti-aliasing del navegador */
-body {
-  background-color: var(--blanco);
-}
-
-/* ===== CORRECCIÓN FINAL — UNIÓN PERFECTA ENTRE HEADER Y MENÚ ===== */
-
-/* 1️⃣ Aseguramos que no haya márgenes ni sombras */
-.header, .navbar, .menu-movil {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* 2️⃣ Ajustamos el degradado del header */
-.header {
-  background: linear-gradient(to right, #ffffff 15%, #007bff 55%, #004aad 100%);
-  z-index: 100;
-}
-
-/* 3️⃣ Hacemos que el menú móvil herede el degradado exacto */
-.menu-movil {
-  background: inherit; /* mismo degradado que el header */
+.card3D {
   position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  width: 100%;
-  border: none;
-  margin: 0;
-  padding: 0;
-  z-index: 99;
-  transform: translateY(-1px); /* 🔥 elimina por completo el hueco blanco */
-}
-
-/* 4️⃣ Evitamos renderizado blanco entre los dos degradados */
-body, html {
-  background-color: #fff;
-  overflow-x: hidden;
-}
-
-/* ===== CATÁLOGO DE PRODUCTOS ===== */
-.catalogo {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  padding: 2rem 0;
-}
-
-.producto {
+  width: 260px;
   background: #fff;
   border: 2px solid var(--azul);
   border-radius: 15px;
-  overflow: hidden;
-  width: 90%;
-  max-width: 350px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 1.2rem;
   text-align: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.8s ease, box-shadow 0.3s ease;
 }
 
-.producto:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.card3D:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
-.producto video {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.producto h3 {
+.card3D h3 {
   color: var(--azul-oscuro);
-  margin: 1rem 0 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.producto p {
-  padding: 0 1rem;
+.card3D p {
   color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.precio {
+  display: inline-block;
+  background: linear-gradient(to right, var(--azul), var(--azul-oscuro));
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
   font-size: 0.95rem;
 }
 
-.producto .btn-wpp {
-  margin: 1rem 0 1.5rem;
-  background: #25D366;
-  color: #fff;
-  padding: 0.7rem 1.4rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease;
+/* Flechas */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--azul-oscuro);
+  z-index: 10;
+  user-select: none;
+  transition: transform 0.2s ease;
 }
 
-.producto .btn-wpp:hover {
-  background: #1ebd5a;
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
-.menu-movil a {
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.1rem;
+.carousel-btn.prev { left: -65px; }
+.carousel-btn.next { right: -65px; }
+
+.carousel-btn:hover {
+  transform: translateY(-50%) scale(1.15);
 }
 
-/* ===== AJUSTE ESPECÍFICO PARA TIENDA.HTML ===== */
-body.tienda-page .menu-btn,
-body.tienda-page .menu-movil {
-  display: none !important;
-}
-
-body.tienda-page .nav-links {
-  display: flex !important;
-  justify-content: center;
-  width: 100%;
-}
-
-body.tienda-page .nav-links li a {
-  color: #fff;
-  font-weight: 600;
-  background: linear-gradient(to right, #007bff, #004aad);
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-body.tienda-page .nav-links li a:hover {
-  background: linear-gradient(to right, #006ae8, #003b8f);
-}
-
-/* En responsive, mostrar el enlace centrado */
-@media (max-width: 768px) {
-  body.tienda-page .logo-container {
-    justify-content: center;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .carousel-container {
+    max-width: 95%;
+    height: 300px;
   }
-
-  body.tienda-page .nav-links {
-    margin-top: 0.8rem;
-  }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
 }
 
-/* ===== TIENDA PAGE — ENLACE VOLVER ATRÁS ===== */
-body.tienda-page .nav-links {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.8rem;
-}
-
-body.tienda-page .nav-links a {
-  color: #fff;
-  font-weight: 600;
-  background: linear-gradient(to right, #007bff, #004aad);
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-body.tienda-page .nav-links a:hover {
-  background: linear-gradient(to right, #006ae8, #003b8f);
-  transform: scale(1.05);
-}
-
-/* En responsive: mantener centrado y visible */
-@media (max-width: 768px) {
-  body.tienda-page .logo-container {
-    justify-content: center;
-  }
-
-  body.tienda-page .nav-links {
-    margin-top: 0.8rem;
-  }
+@media (max-width: 600px) {
+  .carousel-container { height: 280px; }
+  .card3D { width: 220px; padding: 1rem; }
+  .carousel-btn { font-size: 1.8rem; }
 }

@@ -1,223 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Servicios Web | TuSitioWebADistancia — Desarrollo Front End y Back End</title>
-
-  <!-- SEO Potente -->
-  <meta name="description" content="Servicios web profesionales 100% a distancia: desarrollo Front End, Back End, Full Stack, E-commerce, Landing Pages, mantenimiento, seguridad y SEO.">
-  <meta name="keywords" content="desarrollo web, sitios web, landing page, ecommerce, programador, front end, back end, full stack, SEO, programación, diseño web, TuSitioWebADistancia">
-  <meta name="author" content="TuSitioWebADistancia">
-  <link rel="canonical" href="https://www.tusitiowebadistancia.com/servicios.html">
-
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="icon" href="imagenes/logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios | TuSitioWebADistancia</title>
+  <meta name="description" content="Desarrollo web profesional 100% a distancia. Landing Pages, Sitios Multipágina y E-commerce con diseño moderno, SEO potente y soporte integral.">
+  <meta name="keywords" content="landing page, sitios web, multipágina, e-commerce, diseño responsive, desarrollo web, SEO, branding digital, TuSitioWebADistancia">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="servicios.js"></script>
 </head>
-
 <body>
-  <!-- Loader -->
-  <div id="loader">
-    <img src="imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="loader-icon" />
-    <h2>TuSitioWebADistancia</h2>
-  </div>
 
-
-
-<header class="header">
-  <nav class="navbar">
-    <div class="logo-container">
-      <img src="imagenes/logo.png" alt="Logo TuSitioWebADistancia" class="logo" />
-      <button class="menu-btn" id="menu-btn" aria-label="Abrir menú">
-        ☰
-      </button>
-    </div>
-
-    <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Bienvenido</a></li>
-      <li><a href="servicios.html">Servicios</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <!-- Menú móvil (oculto por defecto) -->
-  <div class="menu-movil" id="menu-movil">
-    <a href="index.html">Bienvenido</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="contacto.html">Contacto</a>
-  </div>
-</header>
-
-
-  <!-- Sección principal -->
-  <section class="section">
-    <h1>Servicios Web Profesionales</h1>
-    <p>
-      En <strong>TuSitioWebADistancia</strong> desarrollamos soluciones web 100% a distancia,
-      combinando diseño, funcionalidad y estrategia. Ofrecemos servicios completos para
-      empresas, profesionales y emprendedores que buscan crecer online.
-    </p>
-  </section>
-
-  <!-- Front End -->
-  <section class="section servicios">
-    <h2>Desarrollo Front End</h2>
-
-    <div class="servicio">
-      <video src="videos/landing.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Diseño y desarrollo de interfaces</h3>
-        <p>
-          Creamos interfaces atractivas, funcionales y responsivas. Tu web se adapta a cualquier dispositivo con
-          una experiencia de usuario fluida y moderna. Ideal para sitios corporativos, portfolios y startups.
-        </p>
+  <!-- ===== ENCABEZADO ===== -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo-container">
+        <img src="./imagenes/logo.png" alt="Logo Tu Sitio Web a Distancia" class="logo">
+        <button class="menu-btn"><i>☰</i></button>
       </div>
-    </div>
-
-    <div class="servicio">
-      <video src="videos/multipagina.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Experiencia de usuario (UX) optimizada</h3>
-        <p>
-          Mejoramos la navegación y la interacción del usuario. Aplicamos diseño centrado en la conversión para
-          aumentar tus ventas y captar más clientes desde la primera visita.
-        </p>
+      <ul class="nav-links">
+        <li><a href="index.html">Bienvenido</a></li>
+        <li><a href="servicios.html" class="activo">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="menu-movil">
+        <a href="index.html">Bienvenido</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="contacto.html">Contacto</a>
       </div>
-    </div>
+    </nav>
+  </header>
 
-    <div class="servicio">
-      <video src="videos/ecommerce.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Desarrollo con tecnologías modernas</h3>
-        <p>
-          HTML5, CSS3, SCSS, JavaScript, React o Vue. Sitios rápidos, estables y optimizados para SEO, con carga
-          dinámica y animaciones suaves.
-        </p>
+  <!-- ===== SECCIÓN DE SERVICIOS ===== -->
+  <main class="section servicios">
+    <h1>Servicios de Desarrollo Web Profesional</h1>
+    <p class="intro-text">Transformamos ideas en sitios web funcionales, rápidos y visualmente atractivos. Explorá nuestras soluciones diseñadas 100% a distancia.</p>
+
+    <!-- === CARRUSEL 1: LANDING PAGES === -->
+    <section class="categoria">
+      <h2>🔹 Landing Pages</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn prev">&#10094;</button>
+        <div class="carousel" id="carousel1">
+          <div class="card3D">
+            <h3>💡 Plan 1 — Inicial</h3>
+            <p>Página de presentación profesional. Ideal para negocios nuevos o personales.</p>
+            <span class="precio">US $400</span>
+          </div>
+          <div class="card3D">
+            <h3>🚀 Plan 2 — Emprendedor</h3>
+            <p>Landing con estrategia de venta, animaciones y diseño adaptable a todos los dispositivos.</p>
+            <span class="precio">US $750</span>
+          </div>
+          <div class="card3D">
+            <h3>💎 Plan 3 — Empresarial</h3>
+            <p>Sistema de captación de leads, branding completo y textos optimizados profesionalmente.</p>
+            <span class="precio">US $1 200</span>
+          </div>
+          <div class="card3D">
+            <h3>🏆 Plan 4 — Premium Corporativo</h3>
+            <p>Diseño exclusivo, copywriting estratégico, seguimiento de leads, hosting anual y soporte postventa.</p>
+            <span class="precio">US $2 000 – 3 000</span>
+          </div>
+        </div>
+        <button class="carousel-btn next">&#10095;</button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Back End -->
-  <section class="section servicios">
-    <h2>Desarrollo Back End</h2>
-
-    <div class="servicio">
-      <video src="videos/multipagina.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>APIs y gestión de datos</h3>
-        <p>
-          Diseñamos APIs seguras y escalables que permiten conectar tu web con bases de datos y servicios externos.
-          Ideal para sistemas de usuarios, catálogos y aplicaciones personalizadas.
-        </p>
+    <!-- === CARRUSEL 2: SITIOS MULTIPÁGINA === -->
+    <section class="categoria">
+      <h2>🔹 Sitios Multipágina</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn prev">&#10094;</button>
+        <div class="carousel" id="carousel2">
+          <div class="card3D">
+            <h3>🧩 Plan 1 — Profesional (3–5 páginas)</h3>
+            <p>Inicio, Servicios y Contacto. Diseño moderno, responsive y optimizado.</p>
+            <span class="precio">US $800 – 1 200</span>
+          </div>
+          <div class="card3D">
+            <h3>⚙ Plan 2 — Empresarial (5–8 páginas)</h3>
+            <p>SEO avanzado, animaciones, formularios, integración con redes, Google Maps y analítica.</p>
+            <span class="precio">US $1 500 – 2 500</span>
+          </div>
+          <div class="card3D">
+            <h3>🚀 Plan 3 — Premium (10+ páginas o panel admin)</h3>
+            <p>Panel editable (CMS), hosting, branding completo, estrategia digital y mantenimiento inicial.</p>
+            <span class="precio">US $3 000 – 6 000</span>
+          </div>
+        </div>
+        <button class="carousel-btn next">&#10095;</button>
       </div>
-    </div>
+    </section>
 
-    <div class="servicio">
-      <video src="videos/landing.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Autenticación y seguridad</h3>
-        <p>
-          Implementamos registro, login y manejo de usuarios con tokens (JWT) y cifrado. Protección contra ataques
-          comunes como XSS o inyección SQL.
-        </p>
+    <!-- === CARRUSEL 3: E-COMMERCE === -->
+    <section class="categoria">
+      <h2>🔹 E-commerce</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn prev">&#10094;</button>
+        <div class="carousel" id="carousel3">
+          <div class="card3D">
+            <h3>💡 E-commerce Básico</h3>
+            <p>Catálogo de 10–30 productos, carrito simple, integración de pagos (MercadoPago / PayPal) y pedidos por WhatsApp o mail.</p>
+            <span class="precio">US $1 200 – 2 000</span>
+          </div>
+        </div>
+        <button class="carousel-btn next">&#10095;</button>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="servicio">
-      <video src="videos/ecommerce.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Integración con bases de datos</h3>
-        <p>
-          Conectamos tu sitio con bases SQL o NoSQL (MySQL, MongoDB, Firebase). Realizamos backups automáticos y
-          mantenemos la integridad de tus datos.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Full Stack -->
-  <section class="section servicios">
-    <h2>Desarrollo Full Stack</h2>
-
-    <div class="servicio">
-      <video src="videos/multipagina.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Desarrollo integral (Front + Back)</h3>
-        <p>
-          Creamos sitios y sistemas completos desde cero, integrando frontend dinámico con backend robusto. Ideal
-          para proyectos empresariales y plataformas de usuarios.
-        </p>
-      </div>
-    </div>
-
-    <div class="servicio">
-      <video src="videos/ecommerce.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>E-commerce con panel administrativo</h3>
-        <p>
-          Tiendas online completas con carrito, gestión de stock y pagos integrados. Administrá tu negocio desde un
-          panel intuitivo con métricas y seguridad SSL.
-        </p>
-      </div>
-    </div>
-
-    <div class="servicio">
-      <video src="videos/landing.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Automatización y analítica</h3>
-        <p>
-          Automatizamos procesos de correos, recordatorios y reportes. Incluimos paneles de estadísticas y métricas
-          de rendimiento para potenciar tus resultados.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEO -->
-  <section class="section servicios">
-    <h2>Optimización SEO y rendimiento</h2>
-
-    <div class="servicio">
-      <video src="videos/landing.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Posicionamiento orgánico</h3>
-        <p>
-          Aplicamos estrategias SEO potentes: palabras clave, estructura semántica, etiquetas meta y contenido
-          optimizado para Google. Subí posiciones y atraé tráfico real.
-        </p>
-      </div>
-    </div>
-
-    <div class="servicio">
-      <video src="videos/ecommerce.mp4" autoplay muted loop></video>
-      <div class="servicio-texto">
-        <h3>Optimización técnica</h3>
-        <p>
-          Mejoramos el rendimiento, reducimos tiempos de carga y adaptamos tu sitio a las Core Web Vitals.
-          Resultados visibles en motores de búsqueda y experiencia de usuario.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Consultorías -->
-  <section class="section contacto">
-    <h2>Consultorías Web Personalizadas</h2>
-    <div class="contacto-contenido">
-      <img src="imagenes/logo.png" alt="Consultoría TuSitioWebADistancia" class="foto-contacto" />
-      <div class="contacto-texto">
-        <p><strong>Consultas personalizadas.</strong></p>
-        <a href="https://wa.me/541141999497" class="btn-wpp" target="_blank">💬 Consultar por WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>© 2025 TuSitioWebADistancia — Todos los derechos reservados</p>
+    <p>© 2025 TuSitioWebADistancia — 100% a distancia</p>
   </footer>
 
-  <script src="./script.js"></script>
 </body>
 </html>
