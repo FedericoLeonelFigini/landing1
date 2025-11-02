@@ -1,16 +1,16 @@
-// Esperar a que todo el contenido del DOM esté listo
+// ==== ESPERAR A QUE EL DOM CARGUE ====
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Loader (si ya lo tenés)
+  // ==== LOADER ====
   const loader = document.getElementById("loader");
   if (loader) {
     window.addEventListener("load", () => {
       loader.style.opacity = "0";
-      setTimeout(() => loader.style.display = "none", 600);
+      setTimeout(() => loader.style.display = "none", 500);
     });
   }
 
-  // Control de música (solo si existe en la página)
+  // ==== CONTROL DE MÚSICA (si existe en la página) ====
   const musica = document.getElementById("musica-fondo");
   const btnMusica = document.getElementById("toggle-musica");
   if (musica && btnMusica) {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Scroll suave para los enlaces del encabezado
+  // ==== SCROLL SUAVE EN ENLACES ====
   document.querySelectorAll('a[href^="#"]').forEach((enlace) => {
     enlace.addEventListener("click", (e) => {
       e.preventDefault();
@@ -34,58 +34,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ==== Acordeón FAQ ====
-  const faqButtons = document.querySelectorAll(".faq-question");
-  faqButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const item = btn.parentElement;
-
-      // Si querés que solo haya UNA pregunta abierta:
-      faqButtons.forEach((other) => {
-        if (other !== btn) {
-          other.parentElement.classList.remove("active");
-        }
-      });
-
-      // Alternar el item clickeado
-      item.classList.toggle("active");
-    });
-  });
-
-});
-
-// ===== Menú móvil =====
-document.addEventListener("DOMContentLoaded", () => {
+  // ==== MENÚ RESPONSIVE ====
   const menuBtn = document.getElementById("menu-btn");
   const menuMovil = document.getElementById("menu-movil");
 
   if (menuBtn && menuMovil) {
-    menuBtn.addEventListener("click", () => {
+    // Abrir/cerrar menú
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       menuMovil.style.display =
         menuMovil.style.display === "flex" ? "none" : "flex";
     });
 
-    // Cerrar menú al hacer clic en un enlace
-    menuMovil.querySelectorAll("a").forEach((link) => {
+    // Cerrar al hacer clic fuera
+    document.addEventListener("click", (e) => {
+      if (!menuMovil.contains(e.target) && !menuBtn.contains(e.target)) {
+        menuMovil.style.display = "none";
+      }
+    });
+
+    // Cerrar al seleccionar un enlace
+    menuMovil.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         menuMovil.style.display = "none";
       });
     });
   }
-});
 
-// ==== Loader ====
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  loader.style.opacity = "0";
-  setTimeout(() => loader.style.display = "none", 500);
-});
+  // ==== ACORDEÓN FAQ ====
+  const faqButtons = document.querySelectorAll(".faq-question");
+  faqButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.parentElement;
 
-// ==== Menú móvil ====
-const menuBtn = document.getElementById("menu-btn");
-const menuMovil = document.getElementById("menu-movil");
+      // Solo una pregunta abierta a la vez
+      faqButtons.forEach((other) => {
+        if (other !== btn) other.parentElement.classList.remove("active");
+      });
 
-menuBtn.addEventListener("click", () => {
-  const visible = menuMovil.style.display === "flex";
-  menuMovil.style.display = visible ? "none" : "flex";
+      item.classList.toggle("active");
+    });
+  });
+
 });
