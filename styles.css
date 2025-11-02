@@ -452,3 +452,16 @@ footer {
     overflow-x: hidden;
   }
 }
+
+.precio {
+  display: inline-block;
+  background: linear-gradient(to right, var(--azul), var(--azul-oscuro));
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer; /* indica que es clickeable */
+  user-select: none;
+  transition: all 0.3s ease;
+}
