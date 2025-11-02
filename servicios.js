@@ -1,4 +1,4 @@
-// ==== MENÚ RESPONSIVE ====
+// ==== MENÚ RESPONSIVE ==== 
 const menuBtn = document.querySelector(".menu-btn");
 const menuMovil = document.querySelector(".menu-movil");
 
@@ -8,135 +8,89 @@ if (menuBtn && menuMovil) {
   });
 }
 
-// ==== CARRUSEL 3D ====
-function initCarousel(carouselId) {
-  const carousel = document.getElementById(carouselId);
-  const cards = carousel.querySelectorAll(".card3D");
-  const prevBtn = carousel.parentElement.querySelector(".prev");
-  const nextBtn = carousel.parentElement.querySelector(".next");
-  
-  let angle = 0;
-  const radius = 360 / cards.length;
-  
-  function updateRotation() {
-    cards.forEach((card, i) => {
-      const rot = (i * radius) + angle;
-      card.style.transform = `rotateY(${rot}deg) translateZ(340px)`;
+// ==== CARRUSEL 3D — GIRA DE A UNA TARJETA ==== 
+document.querySelectorAll(".carousel-container").forEach(container => {
+  const carousel = container.querySelector(".carousel");
+  const cards = container.querySelectorAll(".card3D");
+  const totalCards = cards.length;
+  let currentIndex = 0;
+
+  // Posicionar tarjetas en círculo
+  const angle = 360 / totalCards;
+  cards.forEach((card, i) => {
+    const rotation = i * angle;
+    card.style.transform = `rotateY(${rotation}deg) translateZ(380px)`;
+  });
+
+  // Rotar carrusel según índice
+  function rotateCarousel() {
+    const rotationY = currentIndex * -angle;
+    carousel.style.transform = `translateZ(-300px) rotateY(${rotationY}deg)`;
+  }
+
+  // Botones de flecha
+  const prevBtn = container.querySelector(".carousel-btn.prev");
+  const nextBtn = container.querySelector(".carousel-btn.next");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+      rotateCarousel();
     });
   }
 
-  updateRotation();
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % totalCards;
+      rotateCarousel();
+    });
+  }
 
-  nextBtn.addEventListener("click", () => {
-    angle -= radius;
-    updateRotation();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    angle += radius;
-    updateRotation();
-  });
-
-  // Touch/drag soporte para móviles
+  // === GESTOS (TOUCH O MOUSE) ===
   let startX = 0;
-  carousel.addEventListener("touchstart", (e) => startX = e.touches[0].clientX);
-  carousel.addEventListener("touchmove", (e) => {
-    const diff = e.touches[0].clientX - startX;
-    if (Math.abs(diff) > 50) {
-      angle += diff > 0 ? radius : -radius;
-      updateRotation();
-      startX = e.touches[0].clientX;
-    }
+  let isDragging = false;
+
+  container.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
   });
-}
 
-// Iniciar los tres carruseles
-["carousel1", "carousel2", "carousel3"].forEach(initCarousel);
-
-// === INTERACCIÓN DE TARJETAS ===
-document.querySelectorAll(".card3D").forEach(card => {
-  const precio = card.querySelector(".precio");
-  const precioOriginal = precio.textContent.trim();
-  const numeroWpp = "1141999497";
-  
-  card.addEventListener("click", () => {
-    // Si ya está mostrando el botón, volver al precio original
-    if (precio.dataset.active === "true") {
-      precio.innerHTML = precioOriginal;
-      precio.style.background = "linear-gradient(to right, #007bff, #004aad)";
-      precio.style.color = "#fff";
-      precio.dataset.active = "false";
-    } 
-    else {
-      // Reemplaza el contenido por botón de WhatsApp
-      precio.innerHTML = `<a href="https://wa.me/${numeroWpp}?text=Hola!%20Estoy%20interesado%20en%20este%20servicio%20web." target="_blank">Consultar por WhatsApp</a>`;
-      precio.style.background = "#25D366";
-      precio.style.color = "#fff";
-      precio.dataset.active = "true";
-
-      // Ajuste visual para parecer botón
-      const enlace = precio.querySelector("a");
-      enlace.style.color = "#fff";
-      enlace.style.textDecoration = "none";
-      enlace.style.fontWeight = "600";
-      enlace.style.display = "inline-block";
-      enlace.style.padding = "0.4rem 1rem";
-      enlace.style.borderRadius = "20px";
-      enlace.style.transition = "0.3s";
-      enlace.addEventListener("mouseenter", () => enlace.style.opacity = "0.85");
-      enlace.addEventListener("mouseleave", () => enlace.style.opacity = "1");
+  container.addEventListener("mouseup", (e) => {
+    if (!isDragging) return;
+    const endX = e.clientX;
+    const diff = endX - startX;
+    if (diff > 50) {
+      currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+    } else if (diff < -50) {
+      currentIndex = (currentIndex + 1) % totalCards;
     }
+    rotateCarousel();
+    isDragging = false;
+  });
+
+  container.addEventListener("mouseleave", () => (isDragging = false));
+
+  // Soporte táctil
+  container.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  container.addEventListener("touchend", (e) => {
+    if (!isDragging) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+    if (diff > 50) {
+      currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+    } else if (diff < -50) {
+      currentIndex = (currentIndex + 1) % totalCards;
+    }
+    rotateCarousel();
+    isDragging = false;
   });
 });
 
-// === INTERACCIÓN DE TARJETAS: CONSULTAR POR WHATSAPP ===
-document.querySelectorAll(".card3D").forEach(card => {
-  const precio = card.querySelector(".precio");
-  const precioOriginal = precio.textContent.trim();
-  const numeroWpp = "1141999497";
-
-  // Obtener datos de la tarjeta
-  const titulo = card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : "";
-  const descripcion = card.querySelector("p") ? card.querySelector("p").textContent.trim() : "";
-
-  card.addEventListener("click", () => {
-    // Si ya está mostrando el botón, volver al precio original
-    if (precio.dataset.active === "true") {
-      precio.innerHTML = precioOriginal;
-      precio.style.background = "linear-gradient(to right, #007bff, #004aad)";
-      precio.style.color = "#fff";
-      precio.dataset.active = "false";
-      precio.classList.remove("brillo-verde");
-    } 
-    else {
-      // Crear mensaje con descripción y título
-      const mensaje = `Hola! Estoy interesado en el servicio "${titulo}".\n\nDetalles: ${descripcion}\n\n¿Podrían brindarme más información?`;
-      const linkWpp = `https://wa.me/${numeroWpp}?text=${encodeURIComponent(mensaje)}`;
-
-      // Mostrar botón de WhatsApp
-      precio.innerHTML = `<a href="${linkWpp}" target="_blank" class="btn-wpp-tarjeta">Consultar por WhatsApp</a>`;
-      precio.style.background = "transparent";
-      precio.dataset.active = "true";
-      precio.classList.add("brillo-verde");
-
-      // Ajuste del enlace
-      const enlace = precio.querySelector("a");
-      enlace.style.color = "#fff";
-      enlace.style.textDecoration = "none";
-      enlace.style.fontWeight = "600";
-      enlace.style.display = "inline-block";
-      enlace.style.padding = "0.4rem 1rem";
-      enlace.style.borderRadius = "20px";
-      enlace.style.transition = "0.3s";
-      enlace.style.background = "#25D366";
-
-      enlace.addEventListener("mouseenter", () => enlace.style.opacity = "0.85");
-      enlace.addEventListener("mouseleave", () => enlace.style.opacity = "1");
-    }
-  });
-});
-
-// === CAMBIO DE PRECIO A BOTÓN DE WHATSAPP ===
+// ==== CAMBIO DE PRECIO A BOTÓN DE WHATSAPP ====
 document.querySelectorAll(".card3D").forEach(card => {
   const precio = card.querySelector(".precio");
   if (!precio) return; // seguridad
@@ -144,14 +98,14 @@ document.querySelectorAll(".card3D").forEach(card => {
   const precioOriginal = precio.textContent.trim();
   const numeroWpp = "1141999497";
 
-  // Obtener el texto de la tarjeta
+  // Obtener info de la tarjeta
   const titulo = card.querySelector("h3")?.textContent.trim() || "";
   const descripcion = card.querySelector("p")?.textContent.trim() || "";
 
   card.addEventListener("click", (e) => {
-    e.stopPropagation(); // evita conflictos con otros clics
+    e.stopPropagation();
 
-    // Si ya tiene el botón, volver al precio
+    // Si ya está mostrando el botón, volver al precio original
     if (precio.dataset.active === "true") {
       precio.textContent = precioOriginal;
       precio.style.background = "linear-gradient(to right, #007bff, #004aad)";
@@ -159,11 +113,11 @@ document.querySelectorAll(".card3D").forEach(card => {
       precio.dataset.active = "false";
       precio.classList.remove("brillo-verde");
     } else {
-      // Crear mensaje dinámico
+      // Crear mensaje con datos dinámicos
       const mensaje = `Hola! Estoy interesado en el servicio "${titulo}".\n\nDetalles: ${descripcion}\n\n¿Podrían brindarme más información?`;
       const linkWpp = `https://wa.me/${numeroWpp}?text=${encodeURIComponent(mensaje)}`;
 
-      // Reemplazar por botón de WhatsApp
+      // Mostrar botón de WhatsApp
       precio.innerHTML = `<a href="${linkWpp}" target="_blank" class="btn-wpp-tarjeta">Consultar por WhatsApp</a>`;
       precio.style.background = "transparent";
       precio.dataset.active = "true";
