@@ -168,7 +168,9 @@ body {
 
 .servicio {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* 🔹 Acomoda el texto debajo */
+  align-items: center; /* 🔹 Centra horizontalmente */
+  text-align: center; /* 🔹 Centra el contenido */
   gap: 1.5rem;
   background: #fff;
   border: 2px solid var(--azul);
@@ -179,6 +181,7 @@ body {
   transition: var(--transicion);
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
 
 .servicio:hover {
   transform: translateY(-4px);
