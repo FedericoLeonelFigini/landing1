@@ -696,3 +696,59 @@ footer {
   .menu-btn { display: block; }
 }
 
+/* ===== AJUSTE DE ESPACIADO ENTRE TARJETAS EN CARRUSEL 3D ===== */
+.carousel-container {
+  position: relative;
+  perspective: 1200px;
+  margin: 5rem auto; /* 🔹 más espacio vertical */
+  max-width: 1000px;
+  height: 460px; /* 🔹 aumenta la altura del carrusel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card3D {
+  position: absolute;
+  width: 280px;
+  min-height: 360px; /* 🔹 garantiza espacio interior */
+  background: #fff;
+  border: 2px solid var(--azul);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.8s ease, box-shadow 0.3s ease;
+}
+
+.card3D p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .carousel-container {
+    height: 400px;
+  }
+  .card3D {
+    width: 240px;
+    min-height: 340px;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-container {
+    height: auto; /* 🔹 ajusta automáticamente en modo vertical */
+    margin-bottom: 3rem;
+  }
+  .card3D {
+    position: static;
+    margin: 1rem auto;
+    transform: none !important;
+    width: 90%;
+    max-width: 350px;
+  }
+}
