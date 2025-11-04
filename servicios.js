@@ -46,6 +46,8 @@ document.querySelectorAll(".carousel-container").forEach(container => {
     });
   }
 
+
+
   // === GESTOS (TOUCH O MOUSE) ===
   let startX = 0;
   let isDragging = false;
@@ -125,3 +127,112 @@ document.querySelectorAll(".card3D").forEach(card => {
     }
   });
 });
+
+// === AUTO-REVERTIR TARJETAS SOLO EN RESPONSIVE ===
+if (window.innerWidth <= 768) {
+  document.querySelectorAll(".card3D").forEach(card => {
+    card.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+
+      // Si se giró, volver a la posición original a los 2 segundos
+      if (card.classList.contains("flipped")) {
+        setTimeout(() => {
+          card.classList.remove("flipped");
+        }, 2000);
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Solo ejecutar este comportamiento en pantallas pequeñas
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const cards = document.querySelectorAll(".card3D");
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        // Si la tarjeta tiene estructura interna (card-inner)
+        const inner = card.querySelector(".card-inner");
+        if (!inner) return;
+
+        // Alternar el giro
+        inner.classList.toggle("flipped");
+
+        // Si se giró, volver después de 2 segundos
+        if (inner.classList.contains("flipped")) {
+          setTimeout(() => {
+            inner.classList.remove("flipped");
+          }, 2000);
+        }
+      });
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Solo activar en responsive (pantallas hasta 768px)
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const cards = document.querySelectorAll(".card3D");
+
+    cards.forEach(card => {
+      const inner = card.querySelector(".card-inner");
+      if (!inner) return;
+
+      card.addEventListener("click", () => {
+        // Gira la tarjeta
+        inner.classList.add("flipped");
+
+        // Luego de 2 segundos, vuelve a su posición original
+        setTimeout(() => {
+          inner.classList.remove("flipped");
+        }, 2000);
+      });
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Solo para pantallas pequeñas (responsive)
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const cards = document.querySelectorAll(".card3D");
+
+    cards.forEach(card => {
+      const inner = card.querySelector(".card-inner");
+      const back = card.querySelector(".card-back");
+
+      if (!inner || !back) return;
+
+      // Mensaje al girar
+      const mensaje = document.createElement("div");
+      mensaje.textContent = "💬 Desliza nuevamente para volver";
+      mensaje.style.position = "absolute";
+      mensaje.style.bottom = "10px";
+      mensaje.style.width = "100%";
+      mensaje.style.textAlign = "center";
+      mensaje.style.color = "#fff";
+      mensaje.style.fontWeight = "600";
+      mensaje.style.fontSize = "0.9rem";
+      mensaje.style.opacity = "0";
+      mensaje.style.transition = "opacity 0.5s ease";
+      back.appendChild(mensaje);
+
+      card.addEventListener("click", () => {
+        // Si ya está girada, volver al frente
+        if (inner.classList.contains("flipped")) {
+          inner.classList.remove("flipped");
+          mensaje.style.opacity = "0";
+        } 
+        else {
+          // Gira la tarjeta
+          inner.classList.add("flipped");
+
+          // Mostrar mensaje después del giro
+          setTimeout(() => {
+            mensaje.style.opacity = "1";
+          }, 600);
+        }
+      });
+    });
+  }
+});
+
