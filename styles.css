@@ -812,3 +812,17 @@ footer {
     backface-visibility: visible !important;
   }
 }
+
+@media (max-width: 768px) {
+  .categoria {
+    margin-top: 1rem !important;   /* 🔹 reduce el espacio superior */
+    margin-bottom: 3rem !important; /* 🔹 ajusta el espacio inferior */
+    padding-top: 1rem !important;   /* 🔹 baja el título */
+  }
+
+  .categoria h2 {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important; /* 🔹 reduce espacio entre título y tarjetas */
+    font-size: 1.2rem; /* opcional: mejora la lectura en móvil */
+  }
+}
