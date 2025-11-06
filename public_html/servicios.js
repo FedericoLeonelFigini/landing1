@@ -240,33 +240,50 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const precios = document.querySelectorAll(".precio");
 
+  if (precios.length === 0) return; // seguridad
+
   precios.forEach(precio => {
-    let activado = false; // 🔒 Controla si ya fue clickeado
+    let activado = false; // Evita múltiples clics
 
     precio.addEventListener("click", () => {
-      if (activado) return; // ✅ Evita múltiples activaciones
+      if (activado) return; // Solo se activa una vez
 
-      const numero = "5491141999497"; // ✅ Tu número
+      const numero = "5491141999497"; // ✅ Tu número de WhatsApp completo
       const card = precio.closest(".card3D");
       const titulo = card?.querySelector("h3")?.textContent || "servicio web";
       const descripcion = card?.querySelector("p")?.textContent || "";
-      const mensaje = encodeURIComponent(`Hola 👋, estoy interesado en el ${titulo}. ${descripcion}`);
+      const mensaje = encodeURIComponent(
+        `Hola 👋, estoy interesado en el ${titulo}. ${descripcion}`
+      );
+
       const urlWpp = `https://wa.me/${numero}?text=${mensaje}`;
 
-      // 🔹 Reemplaza el contenido por un enlace
-      precio.innerHTML = `<a href="${urlWpp}" target="_blank" style="
-        display:inline-block;
-        background:#25D366;
-        color:#fff;
-        text-decoration:none;
-        padding:0.45rem 1rem;
-        border-radius:20px;
-        font-weight:600;
-        transition:opacity 0.3s;
-      ">💬 Consultar por WhatsApp</a>`;
+      // Crear botón real completo
+      const boton = document.createElement("a");
+      boton.href = urlWpp;
+      boton.target = "_blank";
+      boton.className = "btn-wpp-tarjeta";
+      boton.textContent = "💬 Consultar por WhatsApp";
 
-      activado = true; // 🔒 Bloquea futuras modificaciones
+      // Aplicar estilo visual directo
+      boton.style.display = "inline-block";
+      boton.style.background = "#25D366";
+      boton.style.color = "#fff";
+      boton.style.fontWeight = "600";
+      boton.style.padding = "0.45rem 1rem";
+      boton.style.borderRadius = "20px";
+      boton.style.textDecoration = "none";
+      boton.style.transition = "opacity 0.3s ease";
+
+      // Reemplaza el precio por el botón
+      precio.innerHTML = "";
+      precio.appendChild(boton);
+
+      // Efecto hover visual
+      boton.addEventListener("mouseenter", () => (boton.style.opacity = "0.85"));
+      boton.addEventListener("mouseleave", () => (boton.style.opacity = "1"));
+
+      activado = true; // 🔒 Solo se activa una vez
     });
   });
 });
-
