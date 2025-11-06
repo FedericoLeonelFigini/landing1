@@ -241,21 +241,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const precios = document.querySelectorAll(".precio");
 
   precios.forEach(precio => {
+    let activado = false; // 🔒 Controla si ya fue clickeado
+
     precio.addEventListener("click", () => {
-      // Número de WhatsApp y mensaje
-      const numero = "5491141999497"; // ✅ Tu número completo con prefijo país y sin "+"
-      const descripcion = precio.closest(".card3D")?.querySelector("h3")?.textContent || "Consulta sobre servicio web";
-      const mensaje = encodeURIComponent(`Hola 👋, estoy interesado en el ${descripcion} que vi en TuSitioWebADistancia.`);
-      
-      // URL de WhatsApp
+      if (activado) return; // ✅ Evita múltiples activaciones
+
+      const numero = "5491141999497"; // ✅ Tu número
+      const card = precio.closest(".card3D");
+      const titulo = card?.querySelector("h3")?.textContent || "servicio web";
+      const descripcion = card?.querySelector("p")?.textContent || "";
+      const mensaje = encodeURIComponent(`Hola 👋, estoy interesado en el ${titulo}. ${descripcion}`);
       const urlWpp = `https://wa.me/${numero}?text=${mensaje}`;
-      
-      // Reemplaza el texto del precio por un enlace real a WhatsApp
-      precio.innerHTML = `<a href="${urlWpp}" target="_blank" style="color:#fff;text-decoration:none;">💬 Consultar por WhatsApp</a>`;
-      
-      // Opcional: evitar clics repetidos
-      precio.style.pointerEvents = "none";
-      precio.style.opacity = "0.95";
+
+      // 🔹 Reemplaza el contenido por un enlace
+      precio.innerHTML = `<a href="${urlWpp}" target="_blank" style="
+        display:inline-block;
+        background:#25D366;
+        color:#fff;
+        text-decoration:none;
+        padding:0.45rem 1rem;
+        border-radius:20px;
+        font-weight:600;
+        transition:opacity 0.3s;
+      ">💬 Consultar por WhatsApp</a>`;
+
+      activado = true; // 🔒 Bloquea futuras modificaciones
     });
   });
 });
+
